@@ -1,0 +1,180 @@
+.nav {
+  position: fixed;
+  right:0;
+  left:0;
+  top:0;
+  padding:0.3rem 0rem;
+  width:100%;
+  z-index:10;
+
+}
+.nav a{
+  color:#fff;
+}
+.nav ul li{
+  margin-left:1.4rem;
+}
+.scrollable{
+  background:rgb(10,20,150);
+}
+.logo a{
+  font-size:1.2rem;
+  font-weight:600;
+  text-transform:uppercase;
+  line-height:1rem;
+  letter-spacing:2px;
+}
+.header {
+  position: relative;
+  height:100vh;
+  width:100%;
+  background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('../Homepage/img1.png');
+  background-attachment: fixed;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.content_box{
+  position:absolute;
+  top:50%;
+  width:100%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+.content_box .col:nth-child(1){
+  flex-basis:60%;
+}
+.content_box .col:nth-child(2){
+  flex-basis:56%;
+}
+.content_box img{
+  width:100%;
+  border-radius:10px;
+ 
+}
+.content_box p{
+  color:#fff;
+}
+.content_box .title{
+  font-size:3rem;
+  margin-bottom:2rem;
+}
+.logout-button{
+  display:inline-flex;
+  color:#000;
+  background:#de9157;
+  padding:0.7rem 1.7rem;
+  border-radius:30px;
+  color:#000;
+}
+.get__identity{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* SERVICES */
+
+.services{
+  margin-top:3REM;
+}
+.services .col{
+  flex-basis:31%;
+}
+.services .col img{
+  border-radius:10px;
+}
+.row .flex{
+  flex-direction: column;
+  
+}
+.cards_title{
+  font-size:1.5rem;
+  color:#ff004f;
+}
+.features{
+  max-width:500px;
+  width:100%;
+  margin:0 auto;
+  margin-top:3rem;
+}
+.features img{
+  border-radius:10px;
+}
+.features .flex{
+  display:flex;
+  flex-direction:row;
+}
+
+/*  Style the testimonials section */
+.testimonials {
+  margin: 2rem 0; /* Add some margin around the section */
+  text-align: center; /* Center the content horizontally */
+  font-size: 1.5rem;
+  color: #000;
+}
+
+/* Style the testimonial container */
+.testimonial {
+  margin: 0.5rem; /* Add some margin between testimonials */
+  padding: 1.5rem; /* Add padding inside the testimonial */
+  border: 1px solid #ddd; /* Add a border */
+  border-radius: 5px; /* Add rounded corners */
+  background-color: #f5f5f5; /* Add a light background color */
+}
+
+/* Style the testimonial text */
+.testimonial p {
+  font-size: 16px; /* Set the font size */
+  color: #000;
+  line-height: 1.5; /* Adjust line spacing for better readability */
+  margin-bottom: 1rem; /* Add some space below the text */
+}
+
+/* Style the client image */
+.testimonial img {
+  width: 100px; /* Set the image width */
+  height: 100px; /* Set the image height */
+  border-radius: 50%; /* Make the image circular */
+  margin: 0 auto; /* Center the image horizontally */
+  display: block; /* Ensure the image behaves like a block element */
+}
+
+/* Style the author information */
+.author {
+  font-style: italic; /* Italicize the author name */
+  margin-top: 0.5rem; /* Add some space above the author info */
+}
+
+
+
+/* FOOTER */
+.footer{
+  margin-top:5REM;
+  background:rgb(10,20,150);
+}
+.footer__navigation{
+  max-width:300PX;
+  margin:0 auto;
+}
+.footer__navigation li{
+  width:50px;
+  height:50px;
+  margin:10px;
+  background:#ff004f;
+  align-items:center;
+  color:#FFF;
+  text-align:center;
+  display:flex;
+  cursor:pointer;
+  border-radius:5rem;
+  transition:all 0.5s;
+  justify-content:center;
+}
+.footer__navigation li:hover{
+  transform:scale(1.1);
+}
+.footer__navigation li a{
+  color:#fff;
+  font-size:1.4rem;
+}

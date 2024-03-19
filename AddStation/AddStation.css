@@ -1,0 +1,66 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #a9a9a9;
+}
+
+.addstation {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.addstation h1 {
+    text-align: center;
+    color: #333;
+}
+
+.addstation form {
+    margin-top: 20px;
+}
+
+.addstation label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.addstation input[type="text"],
+.addstation input[type="number"],
+.addstation input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.addstation input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.addstation input[type="submit"]:hover {
+    background-color: #4708f7;
+}
+
+.addstation p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.addstation a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.addstation a:hover {
+    text-decoration: underline;
+}
