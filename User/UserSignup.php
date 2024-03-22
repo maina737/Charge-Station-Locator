@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $encpassword = password_hash($password, PASSWORD_DEFAULT);
+    $hashedPassword= password_hash($password, PASSWORD_BCRYPT);
 
 
     if (create_database($database, $connection)) {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 throw new Exception($connection->error);
             }
             $stmt_create_user = $connection->prepare("INSERT INTO `users`(username,email,passd) VALUES (?,?,?)");
-            $stmt_create_user->bind_param("sss", $username, $email, $password);
+            $stmt_create_user->bind_param("sss", $username, $email, $hashedPassword);
 
             $stmt_create_user->execute();
 
