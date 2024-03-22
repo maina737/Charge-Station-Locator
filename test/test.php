@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
     <div class="container">
-        <form id="form" action="/">
+        <form id="form" action="./UserSignup.php" method="POST">
             <h1>Registration</h1>
             <div class="input-control">
                 <label for="username">Username</label>

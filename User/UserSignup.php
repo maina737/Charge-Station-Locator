@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $check_email_result = $check_email->get_result();
 
             if ($check_email_result->num_rows > 0) {
-                echo "Email is already taken";
+                echo "Email has already been used";
                 throw new Exception($connection->error);
             }
             $stmt_create_user = $connection->prepare("INSERT INTO `users`(username,email,passd) VALUES (?,?,?)");
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Signup</title>
-    <link rel="stylesheet" type="text/css" href="UserSignup.css">
+    <link rel="stylesheet" type="text/css" href="./UserSignup.css">
     <link rel="stylesheet" href="../index.css">
 </head>
 
