@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once('../Database/connection.php');
 
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = $_POST["password"]; 
 
     $connection->select_db($database);
 
