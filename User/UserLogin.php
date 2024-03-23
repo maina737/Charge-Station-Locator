@@ -1,10 +1,7 @@
 <?php
-
 $usernameFound = $passwordFound = "";
-
+session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    session_start();
 
     require_once('../Database/functions.php');
     require_once('../Database/connection.php');
@@ -14,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $connection->select_db($database);
 
-    $check_username = $connection->prepare("SELECT username,passd FROM `users` WHERE username=?");
+    $check_username = $connection->prepare("SELECT * FROM `users` WHERE username=?");
     $check_username->bind_param("s", $username);
 
     $check_username->execute();
@@ -22,22 +19,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $check_username_results = $check_username->get_result();
 
     if ($check_username_results->num_rows === 1) {
-
         $usernameFound = "";
 
         $userData = $check_username_results->fetch_assoc();
-        if ($userData['passd'] === $password) {
-            $passwordFound = "";
-            echo "Logged successfully";
-
-            redirect('../Homepage/Homepage.php');
+        if (password_verify($password, $userData['passd'])) {
+            $userId = $userData['userId'];
+            $_SESSION['id']=$userData['userId'];
+            header("Location: ../Homepage/Homepage.php?id={$_SESSION['id']}");
+            exit(); 
         } else {
             $passwordFound = "This password is not found";
             echo "Password does not match";
         }
     } else {
         $usernameFound = "This username is not found";
-        echo "username not found";
+        echo "Username not found";
     }
 }
 ?>

@@ -1,10 +1,6 @@
 <?php include("../components/Navbar.php");  ?>
 <div class="header">
-
-
   <?php include('../components/Nav.php') ?>;
-
-
 
   <div class="content_box">
 

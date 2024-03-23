@@ -1,5 +1,9 @@
 <?php
-
+session_start();
+//if(!isset($_SESSION['id'])){
+  //  redirect('');
+  //  exit();
+//}
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     require_once('../Database/functions.php');
@@ -9,13 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $hashedPassword= password_hash($password, PASSWORD_BCRYPT);
-
+    // $hashedPassword= $password;
 
     if (create_database($database, $connection)) {
 
         $connection->select_db($database);
 
         $sql_table = "CREATE TABLE IF NOT EXISTS `users`(
+            userId int primary key auto_increment not null,
             username varchar(255) unique not null,
             email varchar(255) unique not null,
             passd varchar(255) unique not null
