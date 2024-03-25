@@ -39,6 +39,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
+    font-weight: bold;
 }
 
 .login input[type="submit"] {

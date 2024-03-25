@@ -8,10 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $hashedPassword = md5($password);
 
     $connection->select_db($database);
 
-    $check_username = $connection->prepare("SELECT username,passd FROM `users` WHERE username=?");
+    $check_username = $connection->prepare("SELECT username, passd FROM `users` WHERE username=?");
     $check_username->bind_param("s", $username);
 
     $check_username->execute();
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $usernameFound = "";
 
         $userData = $check_username_results->fetch_assoc();
-        if ($userData['passd'] === $password) {
+        if ($userData['passd'] === $hashedPassword) {
             $passwordFound = "";
             redirect("../Homepage/Homepage.php");
         } else {
@@ -50,15 +51,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <div class="login">
         <h1>Login</h1>
-        <form method="POST" action="./UserLogin.php">
+        <form method="POST" action="./UserLogin.php" onsubmit="return validateForm()">
             <label>Username</label>
-            <input type="text" name="username" required>
+            <input type="text" id="username" name="username" required>
+
             <label>Password</label>
-            <input type="password" name="password" required>
+            <input type="password" id="password" name="password" required>
             <input type="submit" name="login" value="LOGIN">
         </form>
         <p>Don't have an account? <a href="./UserSignup.php">Sign Up</a></p>
+        <p>Forgot your password? <a href="../Forgotpassword/forgotpassword.php">Reset Password</a></p>
     </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+
+            var password = document.getElementById("password").value;
+            if (/^\d+$/.test(username)) {
+                alert("Username cannot be numbers only");
+                return false;
+            }
+            if (password.length < 8 || !/[A-Z]/.test(password) || !/[^A-Za-z0-9]/.test(password)) {
+                alert("Password must be at least 8 characters long and contain at least one uppercase letter and one special character");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 
 </html>

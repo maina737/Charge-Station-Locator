@@ -101,8 +101,8 @@
   <section class="testimonials">
   <h2>Testimonials</h2>
   <div class="testimonial">
-    <p>This is a great product ! It has helped me improve my workflow significantly.</p>
-    <img src="../Homepage/scr4.png" alt="Client Name">
+    <p>This is a great App ! It has helped me manage my time while looking for charging stations.</p>
+    <img src="../Homepage/scr7.png" alt="Client Name">
     <p class="author"> - Alex Mwangi, Developer</p>
   </div>
 
