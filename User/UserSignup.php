@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $hashedPassword= password_hash($password, PASSWORD_BCRYPT);
+    // $hashedPassword= password_hash($password, PASSWORD_BCRYPT);
     // $hashedPassword= $password;
 
     if (create_database($database, $connection)) {
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $check_username_result = $check_username->get_result();
 
             if ($check_username_result->num_rows > 0) {
-                echo "Username is already taken";
+                echo "<script type='text/javascript'>alert('Username is already taken')</script>";
                 throw new Exception("");
             }
             $check_email = $connection->prepare("SELECT email from users WHERE email=?");
@@ -44,11 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $check_email_result = $check_email->get_result();
 
             if ($check_email_result->num_rows > 0) {
-                echo "Email has already been used";
+                echo "<script type='text/javascript'>alert('Email has already been used')</script>";
                 throw new Exception($connection->error);
             }
             $stmt_create_user = $connection->prepare("INSERT INTO `users`(username,email,passd) VALUES (?,?,?)");
-            $stmt_create_user->bind_param("sss", $username, $email, $hashedPassword);
+            $stmt_create_user->bind_param("sss", $username, $email, $password);
 
             $stmt_create_user->execute();
 

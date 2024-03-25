@@ -21,7 +21,7 @@ require('../Database/functions.php');
         <section class="table_header">
             <h1> CHARGING STATIONS </h1>
             <ul class="nav_ul flex">
-            <li><a href="../Homepage/Homepage.php" class="logout-button" style="color:#000">HOMEPAGE</a></li>
+            <!--<li><a href="../Homepage/Homepage.php" class="logout-button" style="color:#000">HOMEPAGE</a></li>-->
         </section>
         <section class="table_body">
             <table>

@@ -28,16 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userData = $check_username_results->fetch_assoc();
         if ($userData['passd'] === $password) {
             $passwordFound = "";
-            echo "Logged successfully";
+            echo "<script type='text/javascript'>alert('loggged successfully')</script>";
 
             redirect('../AddStation/AddStation.php');
         } else {
             $passwordFound = "This password is not found";
-            echo "password not found";
+            echo "<script type='text/javascript'>alert('password not found')</script>";
         }
     } else {
         $usernameFound = "This username is not found";
-        echo "username not found";
+        echo "<script type='text/javascript'>alert('Username not found')</script>";
     }
 }
 ?>
