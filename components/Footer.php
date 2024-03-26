@@ -7,8 +7,8 @@
       <div class="footer__navigation">
         <ul class="flex">
           <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/home"><i class="fa-brands fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/charles.ndiritu.946517"><i class="fa-brands fa-facebook"></i></a></li>
         </ul>
       </div>
     </div>

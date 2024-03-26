@@ -28,6 +28,7 @@ body {
     display: block;
     margin-bottom: 5px;
     color: #333;
+    font-weight: bold;
 }
 
 .addstation input[type="text"],
@@ -37,7 +38,7 @@ body {
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 

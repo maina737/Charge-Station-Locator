@@ -1,12 +1,32 @@
 <?php
 
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $station_name = $_POST["station_name"];
     $address_name = $_POST["address_name"];
     $phone_number = $_POST["phone_number"];
     $connector_type = $_POST["connector_type"];
     $payment_method = $_POST["payment_method"];
+
+    // Validation
+    $errors = array();
+
+    // Station name should not be numbers only
+    if (is_numeric($station_name)) {
+        $errors[] = "Station name should not be numbers only.";
+    }
+
+    // Phone number should only be numbers with a maximum length of 10
+    if (!ctype_digit($phone_number) || strlen($phone_number) != 10) {
+        $errors[] = "Phone number should only be numbers with a maximum length of 10.";
+    }
+
+    // Display errors if any
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo $error . "<br>";
+        }
+        exit; // Stop further execution
+    }
 
     require('../Database/connection.php');
     require('../Database/functions.php');
@@ -30,9 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!$stmt_sent_data->execute()) echo "The data was not sent properly";
 
-    echo "The data was sent properly";
+    echo "<script type='text/javascript'>alert('Data sent properly')</script>";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

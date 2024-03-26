@@ -1,20 +1,18 @@
 <?php
-
 $usernameFound = $passwordFound = "";
-
+session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    session_start();
 
     require_once('../Database/functions.php');
     require_once('../Database/connection.php');
 
     $username = $_POST["username"];
-    $password = $_POST["password"]; 
+    $password = $_POST["password"];
+    $hashedPassword = md5($password);
 
     $connection->select_db($database);
 
-    $check_username = $connection->prepare("SELECT username,passd FROM `users` WHERE username=?");
+    $check_username = $connection->prepare("SELECT username, passd FROM `users` WHERE username=?");
     $check_username->bind_param("s", $username);
 
     $check_username->execute();
@@ -22,18 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $check_username_results = $check_username->get_result();
 
     if ($check_username_results->num_rows === 1) {
-
         $usernameFound = "";
 
         $userData = $check_username_results->fetch_assoc();
-        if ($userData['passd'] === $password) {
+        if ($userData['passd'] === $hashedPassword) {
             $passwordFound = "";
-            echo "<script type='text/javascript'>alert('loggged successfully')</script>";
-
-            redirect('../AddStation/AddStation.php');
+            redirect("../AddStation/AddStation.php");
         } else {
             $passwordFound = "This password is not found";
-            echo "<script type='text/javascript'>alert('password not found')</script>";
+            echo "<script type='text/javascript'>alert('Password does not match')</script>";
         }
     } else {
         $usernameFound = "This username is not found";

@@ -12,6 +12,7 @@ require('../Database/functions.php');
     <title>Charging Stations</title>
     <link rel="stylesheet" href="StationDisplay.css">
     <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="GenerateReport.css">
     
 
 </head>
@@ -20,6 +21,8 @@ require('../Database/functions.php');
     <main class="table">
         <section class="table_header">
             <h1> CHARGING STATIONS </h1>
+            <a href="../Homepage/Homepage.php" class="home-button">Back Home</a>
+            <a href="GenerateReport.php" class="generate-report-button">Generate Report</a>
             <ul class="nav_ul flex">
             <!--<li><a href="../Homepage/Homepage.php" class="logout-button" style="color:#000">HOMEPAGE</a></li>-->
         </section>
@@ -74,19 +77,6 @@ require('../Database/functions.php');
 
                     ?>
 
-
-
-
-                    <!-- <tr>
-                        <td> 1 </td>
-                        <td> Waterfront EVchanja </td>
-                        <td> Waterfront Mall </td>
-                        <td> 071272737</td>
-                        <td>
-                            <p>Level 1</p>
-                        </td>
-                        <td> Mpesa,cards </td>
-                    </tr> -->
                 </tbody>
             </table>
         </section>

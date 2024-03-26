@@ -8,6 +8,7 @@
 
         <div class="navigation__menu">
           <ul class="nav_ul flex">
+            <li><a href="../Homepage/Homepage.php" class="homepage" >HOME</a></li>
             <li><a href="../User/UserLogin.php" class="logout-button" style="color:#000">LOGOUT</a></li>
           </ul>
         </div>

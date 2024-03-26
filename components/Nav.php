@@ -8,7 +8,7 @@
         <div class="navigation__menu">
           <ul class="nav_ul flex">
             <li><a href="../utils/google.php">Maps</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="../contact/contact.html">Contact us</a></li>
             <li><a href="./logout.php" class="logout-button" style="color:#000">LOGOUT</a></li>
           </ul>
         </div>

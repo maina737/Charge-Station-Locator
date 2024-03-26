@@ -28,6 +28,7 @@ body {
     display: block;
     margin-bottom: 5px;
     color: #333;
+    font-weight: bold;
 }
 
 .login input[type="text"],
@@ -39,7 +40,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
-    font-weight: bold;
+
 }
 
 .login input[type="submit"] {

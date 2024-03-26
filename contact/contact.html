@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Contact</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <title>Contact Us</title>
 </head>
 <body>
-    <h1>Contact</h1>
-    
-    <form method="post" action="send-email.php">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" required>
-        
-        <label for="email">email</label>
-        <input type="email" name="email" id="email" required>
-        
-        <label for="subject">Subject</label>
-        <input type="text" name="subject" id="subject" required>
-        
-        <label for="message">Message</label>
-        <textarea name="message" id="message" required></textarea>
-        
-        <br>
-        
-        <button>Send</button>
+    <h1>Contact Us</h1>
+    <form action="send_feedback.php" method="post">
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="email">Subject:</label><br>
+        <input type="text" id="subject" name="subject" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
     </form>
-    
 </body>
 </html>
+
 
