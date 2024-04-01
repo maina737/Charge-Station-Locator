@@ -1,61 +1,85 @@
-
 <?php
-    session_start();
+session_start();
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    require_once('../Database/functions.php');
+    require_once('../Database/connection.php');
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db_name = "add-station";
-    $conn = new mysqli($servername, $username, $password, $db_name);
-    if($conn->connect_error){
-      die("Connection failed".$conn->connect_error);
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $hashedPassword = md5($password); 
+    if (create_database($database, $connection)) {
+        $connection->select_db($database);
+
+        $sql_table = "CREATE TABLE IF NOT EXISTS `csowners`(
+            userId int primary key auto_increment not null,
+            username varchar(255) unique not null,
+            email varchar(255) unique not null,
+            passd varchar(255) not null
+        );";
+
+        if (mysqli_query($connection, $sql_table)) {
+            $check_username = $connection->prepare("SELECT username from csowners WHERE username=?");
+            $check_username->bind_param("s", $username);
+            $check_username->execute();
+            $check_username_result = $check_username->get_result();
+
+            if ($check_username_result->num_rows > 0) {
+                echo "<script>alert('Username is already taken')</script>";
+            } else {
+                $check_email = $connection->prepare("SELECT email from csowners WHERE email=?");
+                $check_email->bind_param("s", $email);
+                $check_email->execute();
+                $check_email_result = $check_email->get_result();
+
+                if ($check_email_result->num_rows > 0) {
+                    echo "<script>alert('Email has already been used')</script>";
+                } else {
+                    $stmt_create_user = $connection->prepare("INSERT INTO `csowners`(username,email,passd) VALUES (?,?,?)");
+                    $stmt_create_user->bind_param("sss", $username, $email, $hashedPassword);
+                    $stmt_create_user->execute();
+
+                    echo "SUCCESSFULLY REGISTERED USER";
+                    
+                    header("Location: ./CSownerLogin.php");
+                    exit();
+                }
+            }
+        } else {
+            echo json_encode(array("message" => "Failed to create table"));
+        }
+    } else {
+        echo json_encode(array("message" => "Failed to connect database"));
     }
-    echo"successful"; 
-
-
-       if(!empty($username) && !empty($password) &&!is_numeric($username))
-        {
-
-            $query = "insert into owner-login (username, email, password,) values('$username', '$email', '$password')";
-
-            mysqli_query($conn, $query);
-
-            echo "<script type='text/javascript'>alert('Successfully Registered'); window.location='login.php'; </script>";
-           /* '<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Success!</strong>
-            <span class="block sm:inline"> New record created successfully. Click <a href="login.php" class="text-blue-500">here</a> to login.</span>
-          </div>';*/
-
-        }
-        else
-        {
-            echo"<script type='text/javascript'>alert('Please Enter Valid Information')</script>";
-        }
-    
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSownerSignup</title>
-    <link rel="stylesheet" type="text/css" href="CSownerSignup.css">
+    <link rel="stylesheet" type="text/css" href="../User/UserSignup.css">
+    <link rel="stylesheet" href="../index.css">
 </head>
+
 <body>
-     <div class="signup">
+    <div class="signup">
         <h1>Sign Up</h1>
-        <form>
+        <form action="./CSownerSignup.php" method="POST">
             <label>Username</label>
-            <input type="text" name="" required>
+            <input type="text" name="username" required>
             <label>Email</label>
-            <input type="email" name="" required>
+            <input type="text" name="email" required>
             <label>Password</label>
-            <input type="password" name="" required>
-            <input type="submit" name="" value="Submit">
-            
+            <input type="password" name="password" required>
+            <input type="submit" name="signup" value="SIGNUP">
         </form>
-        <p>Already have an account? <a href="#">Login</a></p>
-     </div>
- </body>
- </html>
+        <p>Already have an account? <a href="./CSownerLogin.php">Login</a></p>
+    </div>
+</body>
+
+</html>

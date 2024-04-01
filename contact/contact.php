@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = "Feedback from $name";
 
     // Email message
-    $body = "Name: $name\n";
+    $body .= "Name: $name\n";
     $body .= "Email: $email\n";
     $body .= "Message:\n$message";
 

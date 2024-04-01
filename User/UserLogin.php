@@ -1,6 +1,49 @@
+ 
+
 <?php
 $usernameFound = $passwordFound = "";
-session_start();
+// session_start();
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    require_once('../Database/functions.php');
+    require_once('../Database/connection.php');
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $hashedPassword = md5($password);
+
+    $connection->select_db($database);
+
+    $check_username = $connection->prepare("SELECT username, passd FROM `csowners` WHERE username=?");
+    $check_username->bind_param("s", $username);
+
+    $check_username->execute();
+
+    $check_username_results = $check_username->get_result();
+
+    if ($check_username_results->num_rows === 1) {
+        $usernameFound = "";
+
+        $userData = $check_username_results->fetch_assoc();
+        if ($userData['passd'] === $hashedPassword) {
+            $passwordFound = "";
+            // $_SESSION['userId'] = $userData['username'];
+            redirect("../Homepage/Homepage.php");
+        } else {
+            $passwordFound = "This password is not found";
+            echo "<script type='text/javascript'>alert('Password does not match')</script>";
+        }
+    } else {
+        $usernameFound = "This username is not found";
+        echo "<script type='text/javascript'>alert('Username not found')</script>";
+    }
+}
+?>
+
+
+<?php
+$usernameFound = $passwordFound = "";
+// session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     require_once('../Database/functions.php');
@@ -25,7 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userData = $check_username_results->fetch_assoc();
         if ($userData['passd'] === $hashedPassword) {
             $passwordFound = "";
-            redirect("../Homepage/Homepage.php");
+            // $_SESSION['userId'] = $userData['username'];
+           redirect("../Homepage/Homepage.php");
         } else {
             $passwordFound = "This password is not found";
             echo "<script type='text/javascript'>alert('Password does not match')</script>";

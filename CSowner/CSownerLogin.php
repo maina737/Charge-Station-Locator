@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $connection->select_db($database);
 
-    $check_username = $connection->prepare("SELECT username, passd FROM `users` WHERE username=?");
+    $check_username = $connection->prepare("SELECT username, passd FROM `csowners` WHERE username=?");
     $check_username->bind_param("s", $username);
 
     $check_username->execute();
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="password" name="password" required>
             <input type="submit" name="login" value="LOGIN">
         </form>
-        <p>Don't have an account? <a href="../User/UserSignup.php">Sign Up</a></p>
+        <p>Don't have an account? <a href="../CSowner/CSownerSignup.php">Sign Up</a></p>
         <p>Forgot your password? <a href="../Forgotpassword/forgotpassword.php">Reset Password</a></p>
     </div>
 </body>

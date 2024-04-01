@@ -1,6 +1,33 @@
+<?php
+// Start session
+// session_start();
+
+// // Check if user is not logged in
+// if (!isset($_SESSION['userId'])) {
+//     // Redirect to login page
+//     header('Location: ../User/UserLogin.php');
+//     exit();
+// }
+
+// // Process logout
+// if (isset($_POST['logout'])) {
+//     // Destroy session
+//     session_destroy();
+//     // Redirect to login page
+//     header('Location: ../User/UserLogin.php');
+//     exit();
+//}
+?>
+<!-- Your home page content here -->
+<!-- <form method="post">
+    <input type="submit" name="logout" value="Logout">
+</form> -->
+
 <?php include("../components/Navbar.php");  ?>
 <div class="header">
   <?php include('../components/Nav.php') ?>;
+
+
 
   <div class="content_box">
 
@@ -29,7 +56,7 @@
 </div>
 
 <div class="get__identity" style="margin-top:2rem">
-  <p class="subTitle" style="margin-right:2rem;">Are you a driver ?</p>
+  <p class="subTitle" style="margin-right:2rem;">Are you a charging station owner ?</p>
   <div class="custom_btn">
     <a href="../CSowner/./CSownerLogin.php" class="hero-btn" style="background: #de9157; color:#fff;">ADD STATION</a>
   </div>
