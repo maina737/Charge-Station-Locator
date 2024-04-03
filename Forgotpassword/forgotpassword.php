@@ -1,12 +1,10 @@
+
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Process the form submission
-    // (Send password reset link to the user's email address)
-    // Redirect the user to a confirmation page
-    header("Location: ./PasswordResetConfirmation.php");
-    exit();
-}
+
+session_start();
+// include 'header.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,18 +12,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password</title>
-    <link rel="stylesheet" type="text/css" href="../User/UserLogin.css">
-    <link rel="stylesheet" href="../index.css">
+    <title>Document</title>
 </head>
 <body>
-    <div class="login">
-        <h1>Reset Password</h1>
-        <form method="POST" action="./ForgotPassword.php">
-            <label>Email</label>
-            <input type="email" id="email" name="email" required>
-            <input type="submit" name="reset" value="send email">
+
+
+<?php
+    if(isset($_SESSION['status'])){
+    ?>
+<div>
+    <h2><?php echo $_SESSION['status']; ?></h2>
+</div>
+<?php
+unset($_SESSION['status']);
+}
+?>
+<style>
+    .row{
+        width:100vw;
+        height: 90vh;
+    }
+</style>
+
+<div class="row d-flex justify-content-center align-items-center">
+    <div style="height: 10rem;" class=" content w-25 bg-info">
+        <form action="resetpasswordprocessor.php" method="post">
+            <h3 class="text-center text-decoration-none">Enter your Email </h3>
+            <input type="email" style=" height: 2rem;width: 100%;" name="email" placeholder="Enter email"><br><br>
+            <button type="submit" class="btn btn-secondary w-100" name="forgetpassword">Click To Reset Password</button>
         </form>
     </div>
+
+</div>
+
+
+
 </body>
 </html>

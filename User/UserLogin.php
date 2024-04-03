@@ -1,6 +1,7 @@
  
 
 <?php
+session_start();
 $usernameFound = $passwordFound = "";
 // session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -95,6 +96,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <div class="login">
         <h1>Login</h1>
+        <?php
+                if(isset($_SESSION['status'])){
+                    ?>
+                <div>
+                    <h2><?php echo $_SESSION['status']; ?></h2>
+                </div>
+                <?php
+                unset($_SESSION['status']);
+                }
+            ?>
         <form method="POST" action="./UserLogin.php" onsubmit="return validateForm()">
             <label>Username</label>
             <input type="text" id="username" name="username" required>
