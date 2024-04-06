@@ -71,11 +71,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h1>Sign Up</h1>
         <form action="./CSownerSignup.php" method="POST">
             <label>Username</label>
-            <input type="text" name="username" required>
+            <input type="text" name="username" placeholder="Enter Username" required>
             <label>Email</label>
-            <input type="text" name="email" required>
+            <input type="text" name="email" placeholder="Enter Email" required>
             <label>Password</label>
-            <input type="password" name="password" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
             <input type="submit" name="signup" value="SIGNUP">
         </form>
         <p>Already have an account? <a href="./CSownerLogin.php">Login</a></p>

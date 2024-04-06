@@ -108,10 +108,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ?>
         <form method="POST" action="./UserLogin.php" onsubmit="return validateForm()">
             <label>Username</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
 
             <label>Password</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
             <input type="submit" name="login" value="LOGIN">
         </form>
         <p>Don't have an account? <a href="./UserSignup.php">Sign Up</a></p>

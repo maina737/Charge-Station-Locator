@@ -53,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h1>CSownerLogin</h1>
         <form method="POST" action="./CSownerLogin.php">
             <label>Username</label>
-            <input type="text" name="username" required>
+            <input type="text" name="username" placeholder="Enter Username" required>
             <label>Password</label>
-            <input type="password" name="password" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
             <input type="submit" name="login" value="LOGIN">
         </form>
         <p>Don't have an account? <a href="../CSowner/CSownerSignup.php">Sign Up</a></p>
