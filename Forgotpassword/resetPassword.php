@@ -15,20 +15,40 @@ session_start();
 </head>
 <body>
 <style>
-    body{
-        display: grid;
-        background:#fbbddc;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 560px;
-    }
-    label{
-        margin-bottom: 2rem;
-    }
-    form  input{
-        margin-bottom: 2rem;
-    }
+    form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+label {
+    margin-top: 10px;
+}
+
+input[type="hidden"],
+input[type="number"],
+input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
 </style>
 <p>  <?php
     if(isset($_SESSION['status'])){

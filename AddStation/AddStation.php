@@ -12,12 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Station name should not be numbers only
     if (is_numeric($station_name)) {
-        $errors[] = "Station name should not be numbers only.";
+        echo "<script>alert('Station name should not be numbers only')</script>";
     }
 
     // Phone number should only be numbers with a maximum length of 10
     if (!ctype_digit($phone_number) || strlen($phone_number) != 10) {
-        $errors[] = "Phone number should only be numbers with a maximum length of 10.";
+        echo "<script>alert('Phone number should only be numbers with a maximum length of 10.')</script>";
+        
     }
 
     // Display errors if any

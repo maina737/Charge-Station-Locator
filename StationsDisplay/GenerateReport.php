@@ -96,3 +96,5 @@ if (!$result) {
 // Close the connection
 $connection->close();
 ?>
+
+

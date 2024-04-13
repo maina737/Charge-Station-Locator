@@ -1,6 +1,6 @@
 <div class="footer ">
   <p class="section-title" style="color:#fff;">
-        CONTACT US
+        OUR SOCIALS
       </p>
 
     <div class="container flex">
