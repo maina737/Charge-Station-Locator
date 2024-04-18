@@ -7,26 +7,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $connector_type = $_POST["connector_type"];
     $payment_method = $_POST["payment_method"];
 
-    // Validation
     $errors = array();
 
-    // Station name should not be numbers only
     if (is_numeric($station_name)) {
         echo "<script>alert('Station name should not be numbers only')</script>";
     }
-
-    // Phone number should only be numbers with a maximum length of 10
+ 
     if (!ctype_digit($phone_number) || strlen($phone_number) != 10) {
         echo "<script>alert('Phone number should only be numbers with a maximum length of 10.')</script>";
         
     }
 
-    // Display errors if any
     if (!empty($errors)) {
         foreach ($errors as $error) {
             echo $error . "<br>";
         }
-        exit; // Stop further execution
+        exit; 
     }
 
     require('../Database/connection.php');

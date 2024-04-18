@@ -1,26 +1,3 @@
-<?php
-// Start session
-// session_start();
-
-// // Check if user is not logged in
-// if (!isset($_SESSION['userId'])) {
-//     // Redirect to login page
-//     header('Location: ../User/UserLogin.php');
-//     exit();
-// }
-
-// // Process logout
-// if (isset($_POST['logout'])) {
-//     // Destroy session
-//     session_destroy();
-//     // Redirect to login page
-//     header('Location: ../User/UserLogin.php');
-//     exit();
-//}
-?>
-<!-- <form method="post">
-    <input type="submit" name="logout" value="Logout">
-</form> -->
 
 <?php include("../components/Navbar.php");  ?>
 <div class="header">
@@ -99,7 +76,7 @@
           USSD Service
         </p>
         <div class="cards_description">
-        Access to charging stations data even without internet access.Dial *233#
+        Access to charging stations data even without internet access.Dial *384*82359#
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $stmt_create_user->bind_param("sss", $username, $email, $hashedPassword);
                     $stmt_create_user->execute();
 
-                    echo "SUCCESSFULLY REGISTERED USER";
+                    echo "<script>alert('SUCCESSFULLY REGISTERED USER')</script>";
                     // Redirect the user to login page after successful registration
                     header("Location: ../User/UserLogin.php");
                     exit();
